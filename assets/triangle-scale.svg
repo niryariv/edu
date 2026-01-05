@@ -1,0 +1,6 @@
+<svg width="300" height="220" viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60 170L120 60L180 170H60Z" fill="#FFCF6D" stroke="#1F6F8B" stroke-width="4" />
+  <path d="M170 170L210 90L250 170H170Z" fill="#FFD6C2" stroke="#1F6F8B" stroke-width="4" />
+  <line x1="120" y1="60" x2="210" y2="90" stroke="#1F6F8B" stroke-width="3" stroke-dasharray="6 6" />
+  <line x1="60" y1="170" x2="170" y2="170" stroke="#1F6F8B" stroke-width="3" stroke-dasharray="6 6" />
+</svg>
