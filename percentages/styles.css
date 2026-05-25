@@ -285,6 +285,64 @@ select {
   border-inline-start: 5px solid var(--gold);
 }
 
+.focus-card {
+  display: grid;
+  gap: 10px;
+  margin: 18px 0;
+  padding: 16px;
+  border: 1px solid #c7d8fb;
+  border-radius: var(--radius);
+  background: #f2f6ff;
+}
+
+.focus-card.compact {
+  margin: 14px 0;
+}
+
+.focus-card h3 {
+  margin: 0;
+  color: var(--blue);
+}
+
+.focus-card p {
+  margin: 0;
+  color: var(--ink);
+}
+
+.method-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0 22px 0 0;
+  font-weight: 800;
+}
+
+.memory-strip,
+.read-check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.memory-strip span,
+.read-check span,
+.calm-note {
+  border-radius: var(--radius);
+  background: #f3f6fb;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.memory-strip span,
+.read-check span {
+  padding: 8px 10px;
+}
+
+.calm-note {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+}
+
 .visual-card {
   display: grid;
   align-content: start;

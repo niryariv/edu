@@ -100,6 +100,14 @@ const drillData = {
     intro: "המטרה: לזהות מהי הכמות השלמה ומהו האחוז המבוקש.",
     questions: [
       {
+        prompt: "בכיתה יש 30 תלמידים. 10% מהם הגיעו באופניים. כמה תלמידים הגיעו באופניים?",
+        equation: "30 × 10 ÷ 100",
+        choices: ["30 × 10 ÷ 100", "30 + 10", "30 - 10"],
+        answer: 3,
+        hint: "מחפשים חלק מתוך 30 תלמידים.",
+        explain: "10% מ־30 הם 3 תלמידים.",
+      },
+      {
         prompt: "בבית ספר יש 240 תלמידים. 25% מהם משתתפים בחוגים אחרי הלימודים. כמה תלמידים משתתפים בחוגים?",
         equation: "240 × 25 ÷ 100",
         choices: ["240 × 25 ÷ 100", "240 + 25", "240 - 25"],
@@ -196,6 +204,14 @@ const drillData = {
     type: "translate",
     intro: "בכל שאלה יש לבחור חישוב מתאים לפני שמקלידים תשובה.",
     questions: [
+      {
+        prompt: "מחיר עיפרון הוא 10 ש\"ח ויש 10% הנחה. כמה משלמים?",
+        equation: "10 - (10 × 10 ÷ 100)",
+        choices: ["10 × 10 ÷ 100", "10 - (10 × 10 ÷ 100)", "10 + 10"],
+        answer: 9,
+        hint: "הנחה אומרת לחסר מהמחיר המקורי.",
+        explain: "10% מ־10 הם 1, ולכן משלמים 9.",
+      },
       {
         prompt: "בחנות יש מבצע: ספר שמחירו 70 ש\"ח נמכר ב־20% הנחה. כמה משלמים?",
         equation: "70 - (70 × 20 ÷ 100)",
@@ -441,6 +457,11 @@ function renderTranslateDrill(root, data, state) {
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
       <h3>${question.prompt}</h3>
+      <div class="read-check" aria-label="בדיקת קריאה">
+        <span>1. מה השלם?</span>
+        <span>2. מה האחוז?</span>
+        <span>3. מה מבקשים?</span>
+      </div>
       <p class="sub-label">בחרו את החישוב המתאים:</p>
       <div class="answer-row equation-row"></div>
       <label>תשובה במספר בלבד:<input class="numeric-answer" type="number" inputmode="decimal" /></label>
