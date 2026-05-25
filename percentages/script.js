@@ -372,8 +372,24 @@ function initDiscountModel() {
 }
 
 function setFeedback(element, text, isGood) {
-  element.textContent = text;
+  element.innerHTML = formatMathText(text);
   element.className = `feedback ${isGood ? "good" : "try"}`;
+}
+
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function formatMathText(value) {
+  return escapeHTML(value).replace(
+    /\b(\d+)\/(\d+)\b/g,
+    '<span class="fraction" aria-label="$1 חלקי $2"><span>$1</span><span>$2</span></span>',
+  );
 }
 
 function normalizeAnswer(value) {
@@ -388,10 +404,10 @@ function isNumericCorrect(input, answer) {
 function renderChoiceDrill(root, data, state) {
   const question = data.questions[state.index];
   root.innerHTML = `
-    <p class="drill-intro">${data.intro}</p>
+      <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
-      <h3>${question.prompt}</h3>
+      <h3>${formatMathText(question.prompt)}</h3>
       <div class="answer-row"></div>
       <p class="feedback" role="status"></p>
       <button class="secondary next-button" type="button">שאלה חדשה</button>
@@ -403,7 +419,7 @@ function renderChoiceDrill(root, data, state) {
   question.choices.forEach((choice) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = choice;
+    button.innerHTML = formatMathText(choice);
     button.addEventListener("click", () => {
       const isCorrect = normalizeAnswer(choice) === normalizeAnswer(question.answer);
       setFeedback(feedback, isCorrect ? `נכון. ${question.explain}` : "עוד ניסיון. בדקו איזה ייצוג מתאר אותו חלק.", isCorrect);
@@ -420,10 +436,10 @@ function renderChoiceDrill(root, data, state) {
 function renderNumericDrill(root, data, state) {
   const question = data.questions[state.index];
   root.innerHTML = `
-    <p class="drill-intro">${data.intro}</p>
+      <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
-      <h3>${question.prompt}</h3>
+      <h3>${formatMathText(question.prompt)}</h3>
       <label>תשובה במספר בלבד:<input class="numeric-answer" type="number" inputmode="decimal" /></label>
       <div class="button-row">
         <button class="primary check-button" type="button">בדיקה</button>
@@ -442,7 +458,7 @@ function renderNumericDrill(root, data, state) {
   });
   root.querySelector(".hint-button").addEventListener("click", () => {
     feedback.className = "feedback";
-    feedback.textContent = question.hint;
+    feedback.innerHTML = formatMathText(question.hint);
   });
   root.querySelector(".next-button").addEventListener("click", () => {
     state.index = (state.index + 1) % data.questions.length;
@@ -453,10 +469,10 @@ function renderNumericDrill(root, data, state) {
 function renderTranslateDrill(root, data, state) {
   const question = data.questions[state.index];
   root.innerHTML = `
-    <p class="drill-intro">${data.intro}</p>
+      <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
-      <h3>${question.prompt}</h3>
+      <h3>${formatMathText(question.prompt)}</h3>
       <div class="read-check" aria-label="בדיקת קריאה">
         <span>1. מה השלם?</span>
         <span>2. מה האחוז?</span>
@@ -482,7 +498,7 @@ function renderTranslateDrill(root, data, state) {
   question.choices.forEach((choice) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.textContent = choice;
+    button.innerHTML = formatMathText(choice);
     button.addEventListener("click", () => {
       selected = choice;
       row.querySelectorAll("button").forEach((item) => item.classList.remove("selected"));
@@ -507,7 +523,7 @@ function renderTranslateDrill(root, data, state) {
 
   root.querySelector(".hint-button").addEventListener("click", () => {
     feedback.className = "feedback";
-    feedback.textContent = question.hint;
+    feedback.innerHTML = formatMathText(question.hint);
   });
   root.querySelector(".next-button").addEventListener("click", () => {
     state.index = (state.index + 1) % data.questions.length;

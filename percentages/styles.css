@@ -281,6 +281,28 @@ select {
   color: var(--muted);
 }
 
+.fraction {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: center;
+  min-inline-size: 1.15em;
+  margin: 0 0.08em;
+  vertical-align: middle;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.fraction span:first-child {
+  inline-size: 100%;
+  padding-block-end: 0.08em;
+  border-block-end: 2px solid currentColor;
+}
+
+.fraction span:last-child {
+  padding-block-start: 0.08em;
+}
+
 .key-box {
   border-inline-start: 5px solid var(--gold);
 }
