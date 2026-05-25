@@ -53,9 +53,36 @@
           <div class="two-col">
             <article>
               <p>
-                מחיר של 120 ש"ח עם 25% הנחה: קודם מוצאים 25% מ־120, שהם 30.
-                אחר כך מחסרים: 120 - 30 = 90.
+                קודם מוצאים את השינוי, ורק אחר כך מחליטים אם להוסיף או לחסר.
+                בדוגמאות הראשונות נשתמש ב־10%, כי קל לחשב אותו בראש: 10% הם
+                עשירית מהכמות.
               </p>
+              <div class="worked-examples">
+                <div>
+                  <strong>הנחה של 10%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>10% מ־120 הם 12</span>
+                  <b>120 - 12 = 108</b>
+                </div>
+                <div>
+                  <strong>התייקרות של 10%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>10% מ־120 הם 12</span>
+                  <b>120 + 12 = 132</b>
+                </div>
+                <div>
+                  <strong>ירידה של 20%</strong>
+                  <span>כמות: 80</span>
+                  <span>20% מ־80 הם 16</span>
+                  <b>80 - 16 = 64</b>
+                </div>
+                <div>
+                  <strong>הנחה של 25%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>25% מ־120 הם 30</span>
+                  <b>120 - 30 = 90</b>
+                </div>
+              </div>
               <div class="compare">
                 <div>
                   <strong>הנחה / ירידה</strong>
@@ -76,10 +103,10 @@
               </div>
               <label class="range-label" for="discountSlider">
                 הנחה:
-                <strong><span id="discountValue">25</span>%</strong>
+                <strong><span id="discountValue">10</span>%</strong>
               </label>
-              <input id="discountSlider" type="range" min="0" max="70" value="25" />
-              <p id="discountSentence" class="math-line">מחיר של 120 ש"ח אחרי 25% הנחה: 90 ש"ח.</p>
+              <input id="discountSlider" type="range" min="0" max="70" value="10" />
+              <p id="discountSentence" class="math-line">מחיר של 120 ש"ח אחרי 10% הנחה: 108 ש"ח.</p>
             </article>
           </div>
         </section>

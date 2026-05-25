@@ -493,6 +493,36 @@ input[type="range"] {
   gap: 10px;
 }
 
+.worked-examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.worked-examples div {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f8fafd;
+}
+
+.worked-examples strong {
+  color: var(--coral);
+}
+
+.worked-examples span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.worked-examples b {
+  color: var(--blue);
+  font-size: 1.06rem;
+}
+
 .compare div {
   display: grid;
   gap: 4px;
@@ -695,6 +725,10 @@ button {
   }
 
   .compare {
+    grid-template-columns: 1fr;
+  }
+
+  .worked-examples {
     grid-template-columns: 1fr;
   }
 }
