@@ -500,8 +500,10 @@ input[type="range"] {
 }
 
 .question-box {
+  position: relative;
   display: grid;
   gap: 14px;
+  overflow: hidden;
   background: #fff;
 }
 
@@ -515,6 +517,52 @@ input[type="range"] {
   margin: 0;
   color: var(--green);
   font-weight: 900;
+}
+
+.quiz-progress-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.quiz-progress-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.quiz-progress {
+  display: grid;
+  grid-template-columns: repeat(var(--step-count), minmax(0, 1fr));
+  gap: 6px;
+  inline-size: min(100%, 520px);
+}
+
+.quiz-step {
+  min-block-size: 12px;
+  border: 1px solid #cfd7e7;
+  border-radius: 999px;
+  background: #eef2f8;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.quiz-step.correct {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.quiz-step.wrong {
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+.quiz-step.active {
+  box-shadow: 0 0 0 3px rgba(34, 102, 210, 0.18);
+  transform: translateY(-1px);
 }
 
 .sub-label {
@@ -713,6 +761,138 @@ button {
 
 .feedback.try {
   color: var(--coral);
+}
+
+.quiz-celebration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.quiz-celebration span {
+  position: absolute;
+  inset-block-start: 58%;
+  inset-inline-start: 50%;
+  inline-size: 9px;
+  block-size: 22px;
+  border-radius: 3px;
+  background: var(--color);
+  animation: confetti-burst 920ms cubic-bezier(0.17, 0.84, 0.44, 1) forwards;
+  animation-delay: var(--delay);
+}
+
+.quiz-celebration.sweep span {
+  inset-block-start: auto;
+  inset-block-end: 14px;
+  inline-size: 80px;
+  block-size: 8px;
+  border-radius: 999px;
+  transform: translateX(120%);
+  animation: success-sweep 780ms ease-out forwards;
+}
+
+.quiz-celebration.stack {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 8px;
+  padding-block-end: 16px;
+}
+
+.quiz-celebration.stack span {
+  position: static;
+  inline-size: 24px;
+  block-size: 12px;
+  animation: success-stack 760ms ease-out forwards;
+}
+
+.celebrate-sweep {
+  animation: box-glow 920ms ease-out;
+}
+
+.celebrate-stack .quiz-step.correct {
+  animation: step-bounce 640ms ease-out;
+}
+
+@keyframes confetti-burst {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg) scale(0.65);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rotate)) scale(1);
+  }
+}
+
+@keyframes success-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(120%) scaleX(0.8);
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-420%) scaleX(1.1);
+  }
+}
+
+@keyframes success-stack {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scaleY(0.5);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-88px) scaleY(1.8);
+  }
+}
+
+@keyframes box-glow {
+  0%,
+  100% {
+    box-shadow: none;
+  }
+
+  40% {
+    box-shadow: 0 0 0 5px rgba(22, 128, 92, 0.12), 0 16px 38px rgba(22, 128, 92, 0.18);
+  }
+}
+
+@keyframes step-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  45% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-step,
+  .quiz-celebration span,
+  .celebrate-sweep,
+  .celebrate-stack .quiz-step.correct {
+    animation: none;
+    transition: none;
+  }
 }
 
 .mission ul {

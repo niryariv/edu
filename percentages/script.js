@@ -401,12 +401,98 @@ function isNumericCorrect(input, answer) {
   return Number.isFinite(userValue) && Math.abs(userValue - Number(answer)) < 0.01;
 }
 
+function ensureDrillState(data, state) {
+  if (!Array.isArray(state.results) || state.results.length !== data.questions.length) {
+    state.results = Array(data.questions.length).fill("pending");
+  }
+}
+
+function resultLabel(result) {
+  if (result === "correct") return "נכון";
+  if (result === "wrong") return "צריך תיקון";
+  return "עוד לא נפתר";
+}
+
+function renderQuizProgressHTML(data, state) {
+  ensureDrillState(data, state);
+  const correctCount = state.results.filter((result) => result === "correct").length;
+  const steps = state.results
+    .map((result, index) => {
+      const active = index === state.index ? " active" : "";
+      return `<span class="quiz-step ${result}${active}" role="listitem" aria-label="שאלה ${index + 1}: ${resultLabel(result)}"></span>`;
+    })
+    .join("");
+
+  return `
+    <div class="quiz-progress-wrap" aria-live="polite">
+      <p class="quiz-progress-label">התקדמות: ${correctCount} מתוך ${data.questions.length} נכונות</p>
+      <div class="quiz-progress" role="list" style="--step-count: ${data.questions.length}">${steps}</div>
+    </div>
+  `;
+}
+
+function updateQuizProgress(root, data, state) {
+  const progress = root.querySelector(".quiz-progress-wrap");
+  if (progress) progress.outerHTML = renderQuizProgressHTML(data, state);
+}
+
+function triggerQuizCompleteEffect(root, state) {
+  const box = root.querySelector(".question-box");
+  if (!box) return;
+
+  const effects = ["burst", "sweep", "stack"];
+  let effect = effects[Math.floor(Math.random() * effects.length)];
+  if (effects.length > 1 && effect === state.lastEffect) {
+    effect = effects[(effects.indexOf(effect) + 1) % effects.length];
+  }
+  state.lastEffect = effect;
+
+  box.querySelector(".quiz-celebration")?.remove();
+  box.classList.remove("celebrate-burst", "celebrate-sweep", "celebrate-stack");
+  box.classList.add(`celebrate-${effect}`);
+
+  const celebration = document.createElement("div");
+  celebration.className = `quiz-celebration ${effect}`;
+  celebration.setAttribute("aria-hidden", "true");
+
+  const colors = ["#2266d2", "#16805c", "#d95b43", "#f2b84b", "#7d5cc6"];
+  const stripCount = effect === "stack" ? 8 : 18;
+  celebration.innerHTML = Array.from({ length: stripCount }, (_, index) => {
+    const tx = Math.round((Math.random() - 0.5) * 520);
+    const ty = Math.round(-80 - Math.random() * 160);
+    const rotate = Math.round(Math.random() * 280 - 140);
+    const delay = Math.round(index * 18);
+    const color = colors[index % colors.length];
+    return `<span style="--tx:${tx}px; --ty:${ty}px; --rotate:${rotate}deg; --delay:${delay}ms; --color:${color}"></span>`;
+  }).join("");
+
+  box.append(celebration);
+  window.setTimeout(() => {
+    celebration.remove();
+    box.classList.remove("celebrate-burst", "celebrate-sweep", "celebrate-stack");
+  }, 1400);
+}
+
+function recordQuestionResult(root, data, state, isCorrect) {
+  ensureDrillState(data, state);
+  const wasComplete = state.results.every((result) => result === "correct");
+  state.results[state.index] = isCorrect ? "correct" : "wrong";
+  updateQuizProgress(root, data, state);
+
+  const isComplete = state.results.every((result) => result === "correct");
+  if (isCorrect && isComplete && !wasComplete) {
+    triggerQuizCompleteEffect(root, state);
+  }
+}
+
 function renderChoiceDrill(root, data, state) {
+  ensureDrillState(data, state);
   const question = data.questions[state.index];
   root.innerHTML = `
       <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
+      ${renderQuizProgressHTML(data, state)}
       <h3>${formatMathText(question.prompt)}</h3>
       <div class="answer-row"></div>
       <p class="feedback" role="status"></p>
@@ -422,6 +508,7 @@ function renderChoiceDrill(root, data, state) {
     button.innerHTML = formatMathText(choice);
     button.addEventListener("click", () => {
       const isCorrect = normalizeAnswer(choice) === normalizeAnswer(question.answer);
+      recordQuestionResult(root, data, state, isCorrect);
       setFeedback(feedback, isCorrect ? `נכון. ${question.explain}` : "עוד ניסיון. בדקו איזה ייצוג מתאר אותו חלק.", isCorrect);
     });
     row.append(button);
@@ -434,11 +521,13 @@ function renderChoiceDrill(root, data, state) {
 }
 
 function renderNumericDrill(root, data, state) {
+  ensureDrillState(data, state);
   const question = data.questions[state.index];
   root.innerHTML = `
       <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
+      ${renderQuizProgressHTML(data, state)}
       <h3>${formatMathText(question.prompt)}</h3>
       <label>תשובה במספר בלבד:<input class="numeric-answer" type="number" inputmode="decimal" /></label>
       <div class="button-row">
@@ -454,6 +543,7 @@ function renderNumericDrill(root, data, state) {
   const feedback = root.querySelector(".feedback");
   root.querySelector(".check-button").addEventListener("click", () => {
     const isCorrect = isNumericCorrect(input.value, question.answer);
+    recordQuestionResult(root, data, state, isCorrect);
     setFeedback(feedback, isCorrect ? `נכון. ${question.explain}` : `לא בדיוק. ${question.explain}`, isCorrect);
   });
   root.querySelector(".hint-button").addEventListener("click", () => {
@@ -467,11 +557,13 @@ function renderNumericDrill(root, data, state) {
 }
 
 function renderTranslateDrill(root, data, state) {
+  ensureDrillState(data, state);
   const question = data.questions[state.index];
   root.innerHTML = `
       <p class="drill-intro">${formatMathText(data.intro)}</p>
     <div class="question-box">
       <p class="question-count">שאלה ${state.index + 1} מתוך ${data.questions.length}</p>
+      ${renderQuizProgressHTML(data, state)}
       <h3>${formatMathText(question.prompt)}</h3>
       <div class="read-check" aria-label="בדיקת קריאה">
         <span>1. מה השלם?</span>
@@ -510,6 +602,8 @@ function renderTranslateDrill(root, data, state) {
   root.querySelector(".check-button").addEventListener("click", () => {
     const equationCorrect = normalizeAnswer(selected) === normalizeAnswer(question.equation);
     const answerCorrect = isNumericCorrect(input.value, question.answer);
+    const isCorrect = equationCorrect && answerCorrect;
+    recordQuestionResult(root, data, state, isCorrect);
     if (equationCorrect && answerCorrect) {
       setFeedback(feedback, `נכון. ${question.explain}`, true);
     } else if (!equationCorrect && answerCorrect) {
