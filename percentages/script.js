@@ -436,6 +436,13 @@ function updateQuizProgress(root, data, state) {
   if (progress) progress.outerHTML = renderQuizProgressHTML(data, state);
 }
 
+function advanceQuestion(data, state) {
+  if (state.index === data.questions.length - 1) {
+    state.hasPassedOriginalSet = true;
+  }
+  state.index = (state.index + 1) % data.questions.length;
+}
+
 function triggerQuizCompleteEffect(root, state) {
   const box = root.querySelector(".question-box");
   if (!box) return;
@@ -476,7 +483,23 @@ function triggerQuizCompleteEffect(root, state) {
 function recordQuestionResult(root, data, state, isCorrect) {
   ensureDrillState(data, state);
   const wasComplete = state.results.every((result) => result === "correct");
-  state.results[state.index] = isCorrect ? "correct" : "wrong";
+
+  if (state.hasPassedOriginalSet) {
+    const redIndex = state.results.indexOf("wrong");
+    const pendingIndex = state.results.indexOf("pending");
+    if (isCorrect && redIndex !== -1) {
+      state.results[redIndex] = "correct";
+    } else if (isCorrect && pendingIndex !== -1) {
+      state.results[pendingIndex] = "correct";
+    } else if (!isCorrect && pendingIndex !== -1) {
+      state.results[pendingIndex] = "wrong";
+    } else if (!isCorrect && state.results[state.index] !== "correct") {
+      state.results[state.index] = "wrong";
+    }
+  } else {
+    state.results[state.index] = isCorrect ? "correct" : "wrong";
+  }
+
   updateQuizProgress(root, data, state);
 
   const isComplete = state.results.every((result) => result === "correct");
@@ -515,7 +538,7 @@ function renderChoiceDrill(root, data, state) {
   });
 
   root.querySelector(".next-button").addEventListener("click", () => {
-    state.index = (state.index + 1) % data.questions.length;
+    advanceQuestion(data, state);
     renderDrill(root, data, state);
   });
 }
@@ -551,7 +574,7 @@ function renderNumericDrill(root, data, state) {
     feedback.innerHTML = formatMathText(question.hint);
   });
   root.querySelector(".next-button").addEventListener("click", () => {
-    state.index = (state.index + 1) % data.questions.length;
+    advanceQuestion(data, state);
     renderDrill(root, data, state);
   });
 }
@@ -620,7 +643,7 @@ function renderTranslateDrill(root, data, state) {
     feedback.innerHTML = formatMathText(question.hint);
   });
   root.querySelector(".next-button").addEventListener("click", () => {
-    state.index = (state.index + 1) % data.questions.length;
+    advanceQuestion(data, state);
     renderDrill(root, data, state);
   });
 }
