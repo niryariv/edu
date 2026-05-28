@@ -17,9 +17,15 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
   background:
     linear-gradient(90deg, rgba(34, 102, 210, 0.1), transparent 44%),
     linear-gradient(180deg, #fff, var(--bg));
@@ -33,7 +39,8 @@ a {
 }
 
 .catalog {
-  width: min(1120px, 100%);
+  width: 100%;
+  max-width: 1120px;
   margin: 0 auto;
   padding: clamp(28px, 6vw, 72px) clamp(16px, 5vw, 48px);
 }
@@ -62,9 +69,18 @@ p {
   line-height: 1.75;
 }
 
+h1,
+h2,
+p,
+a,
+span,
+strong {
+  overflow-wrap: break-word;
+}
+
 .courses {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 18px;
   margin-top: 34px;
 }
@@ -87,7 +103,8 @@ p {
 }
 
 .course-tag {
-  width: max-content;
+  width: fit-content;
+  max-width: 100%;
   padding: 6px 10px;
   border-radius: var(--radius);
   background: #fff5df;
@@ -105,4 +122,15 @@ p {
   align-self: end;
   color: var(--green);
   font-weight: 900;
+}
+
+@media (max-width: 520px) {
+  .catalog {
+    padding-inline: 14px;
+  }
+
+  .course-card {
+    min-height: 0;
+    padding: 18px;
+  }
 }

@@ -21,10 +21,13 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   background:
     linear-gradient(90deg, rgba(34, 102, 210, 0.08), transparent 42%),
     linear-gradient(180deg, #fff, var(--bg) 280px);
@@ -63,6 +66,18 @@ li {
   line-height: 1.75;
 }
 
+h1,
+h2,
+h3,
+p,
+li,
+a,
+button,
+strong,
+span {
+  overflow-wrap: break-word;
+}
+
 button,
 input,
 select {
@@ -98,8 +113,13 @@ select {
 }
 
 .topnav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
   padding: 8px 10px;
   border-radius: var(--radius);
+  text-align: center;
 }
 
 .topnav a:hover {
@@ -111,7 +131,9 @@ select {
   display: grid;
   grid-template-columns: minmax(260px, 330px) minmax(0, 1fr);
   gap: 22px;
-  width: min(1380px, 100%);
+  min-width: 0;
+  width: 100%;
+  max-width: 1380px;
   margin: 0 auto;
   padding: 28px clamp(16px, 4vw, 46px) 56px;
 }
@@ -127,9 +149,11 @@ select {
 .content {
   display: grid;
   gap: 20px;
+  min-width: 0;
 }
 
 .panel {
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -151,6 +175,7 @@ select {
   align-items: start;
   justify-content: space-between;
   gap: 16px;
+  min-width: 0;
   margin-bottom: 18px;
 }
 
@@ -503,6 +528,7 @@ input[type="range"] {
   position: relative;
   display: grid;
   gap: 14px;
+  min-width: 0;
   overflow: hidden;
   background: #fff;
 }
@@ -585,6 +611,7 @@ input[type="range"] {
 .equation-row button {
   direction: ltr;
   unicode-bidi: plaintext;
+  overflow-wrap: anywhere;
 }
 
 .chip-row span,
@@ -714,11 +741,13 @@ select {
 }
 
 button {
+  max-width: 100%;
   min-height: 42px;
   border: 0;
   border-radius: var(--radius);
   cursor: pointer;
   font-weight: 800;
+  white-space: normal;
 }
 
 .primary,
@@ -929,12 +958,14 @@ button {
 
 .pager {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
 }
 
 .pager a {
   display: inline-flex;
+  flex: 1 1 150px;
   align-items: center;
   justify-content: center;
   min-height: 44px;
@@ -973,15 +1004,28 @@ button {
 }
 
 @media (max-width: 560px) {
+  .brand {
+    white-space: normal;
+  }
+
   .topnav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
+    font-size: 0.88rem;
   }
 
   .lesson-head {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .range-label {
+    flex-direction: column;
+  }
+
+  .number-line {
+    font-size: 0.78rem;
   }
 
   .compare {
