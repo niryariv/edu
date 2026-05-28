@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>תחנה 4: שינוי באחוזים</title>
+    <link rel="stylesheet" href="styles.css?v=20260528-2" />
+    <script src="script.js?v=20260528-2" defer></script>
+  </head>
+  <body data-page="change">
+    <header class="topbar">
+      <a class="brand" href="index.html">אחוזים בגובה העיניים</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <a href="station-1.html">מה זה אחוז?</a>
+        <a href="station-2.html">ייצוגים</a>
+        <a href="station-3.html">חישוב</a>
+        <a href="station-4.html">שינוי באחוזים</a>
+        <a href="station-5.html">בעיות מילוליות</a>
+        <a href="station-6.html">תרגול מסכם</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="sidebar" aria-label="התקדמות בקורס">
+        <section class="panel progress-panel">
+          <p class="eyebrow">תחנה 4</p>
+          <h1>שינוי באחוזים</h1>
+          <p>בהנחה מחסרים מהשלם המקורי. בהתייקרות מוסיפים לשלם המקורי.</p>
+          <div class="progress-meter" aria-label="התקדמות">
+            <span id="progressFill"></span>
+          </div>
+          <p id="progressText" class="progress-text">0 מתוך 6 תחנות הושלמו</p>
+        </section>
+        <section class="panel nav-panel">
+          <a href="index.html">לשער הקורס</a>
+          <a href="station-1.html">1. מה זה אחוז?</a>
+          <a href="station-2.html">2. ייצוגים</a>
+          <a href="station-3.html">3. חישוב</a>
+          <a class="active" href="station-4.html">4. שינוי</a>
+          <a href="station-5.html">5. בעיות מילוליות</a>
+          <a href="station-6.html">6. תרגול מסכם</a>
+        </section>
+      </aside>
+
+      <div class="content">
+        <section class="lesson panel">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">רעיון מרכזי</p>
+              <h2>קודם מוצאים את השינוי, ואז מוסיפים או מחסרים</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="change">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <p>
+                קודם מוצאים את השינוי, ורק אחר כך מחליטים אם להוסיף או לחסר.
+                בדוגמאות הראשונות נשתמש ב־10%, כי קל לחשב אותו בראש: 10% הם
+                עשירית מהכמות.
+              </p>
+              <div class="worked-examples">
+                <div>
+                  <strong>הנחה של 10%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>10% מ־120 הם 12</span>
+                  <b>120 - 12 = 108</b>
+                </div>
+                <div>
+                  <strong>התייקרות של 10%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>10% מ־120 הם 12</span>
+                  <b>120 + 12 = 132</b>
+                </div>
+                <div>
+                  <strong>ירידה של 20%</strong>
+                  <span>כמות: 80</span>
+                  <span>20% מ־80 הם 16</span>
+                  <b>80 - 16 = 64</b>
+                </div>
+                <div>
+                  <strong>הנחה של 25%</strong>
+                  <span>מחיר: 120 ש"ח</span>
+                  <span>25% מ־120 הם 30</span>
+                  <b>120 - 30 = 90</b>
+                </div>
+              </div>
+              <div class="compare">
+                <div>
+                  <strong>הנחה / ירידה</strong>
+                  <span>מחשבים את האחוז ומחסרים</span>
+                </div>
+                <div>
+                  <strong>התייקרות / עלייה</strong>
+                  <span>מחשבים את האחוז ומוסיפים</span>
+                </div>
+              </div>
+              <div class="focus-card compact">
+                <h3>עצירה לפני חישוב</h3>
+                <p>אם כתוב “אחרי הנחה” או “מחיר חדש”, התשובה היא לא רק האחוז. צריך להחזיר אותו למחיר המקורי: להוסיף או לחסר.</p>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>מחיר לפני ואחרי</h3>
+              <div class="price-bars">
+                <div><span style="height: 100%"></span><b>מקורי</b></div>
+                <div><span id="priceAfterBar" style="height: 75%"></span><b>אחרי</b></div>
+              </div>
+              <label class="range-label" for="discountSlider">
+                הנחה:
+                <strong><span id="discountValue">10</span>%</strong>
+              </label>
+              <input id="discountSlider" type="range" min="0" max="70" value="10" />
+              <p id="discountSentence" class="math-line">מחיר של 120 ש"ח אחרי 10% הנחה: 108 ש"ח.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">תרגול חישובי</p>
+          <h2>מחיר או כמות אחרי שינוי</h2>
+          <p class="calm-note">השאלות הראשונות משתמשות ב־10% כדי שתתמקדו בהחלטה: מחסרים או מוסיפים?</p>
+          <div class="drill" data-drill="change-basic"></div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">טקסט לחישוב</p>
+          <h2>זיהוי הנחה, עלייה או השוואה</h2>
+          <div class="drill" data-drill="change-text"></div>
+        </section>
+
+        <nav class="pager" aria-label="מעבר בין תחנות">
+          <a href="station-3.html">לתחנה 3</a>
+          <a href="station-5.html">לתחנה 5</a>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>

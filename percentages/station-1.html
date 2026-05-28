@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>תחנה 1: מה זה אחוז?</title>
+    <link rel="stylesheet" href="styles.css?v=20260528-2" />
+    <script src="script.js?v=20260528-2" defer></script>
+  </head>
+  <body data-page="idea">
+    <header class="topbar">
+      <a class="brand" href="index.html">אחוזים בגובה העיניים</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <a href="station-1.html">מה זה אחוז?</a>
+        <a href="station-2.html">ייצוגים</a>
+        <a href="station-3.html">חישוב</a>
+        <a href="station-4.html">שינוי באחוזים</a>
+        <a href="station-5.html">בעיות מילוליות</a>
+        <a href="station-6.html">תרגול מסכם</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="sidebar" aria-label="התקדמות בקורס">
+        <section class="panel progress-panel">
+          <p class="eyebrow">תחנה 1</p>
+          <h1>מה זה אחוז?</h1>
+          <p>אחוז הוא חלק מתוך 100. כאן מתאמנים לראות את השלם ואת החלק.</p>
+          <div class="progress-meter" aria-label="התקדמות">
+            <span id="progressFill"></span>
+          </div>
+          <p id="progressText" class="progress-text">0 מתוך 6 תחנות הושלמו</p>
+        </section>
+        <section class="panel nav-panel">
+          <a href="index.html">לשער הקורס</a>
+          <a class="active" href="station-1.html">1. מה זה אחוז?</a>
+          <a href="station-2.html">2. ייצוגים</a>
+          <a href="station-3.html">3. חישוב</a>
+          <a href="station-4.html">4. שינוי</a>
+          <a href="station-5.html">5. בעיות מילוליות</a>
+          <a href="station-6.html">6. תרגול מסכם</a>
+        </section>
+      </aside>
+
+      <div class="content">
+        <section class="lesson panel">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">רעיון מרכזי</p>
+              <h2>אחוז = כמה מתוך 100</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="idea">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <p>
+                כשכתוב 37%, אפשר לקרוא את זה כ־37 מתוך 100 חלקים שווים.
+                אם הכיתה מחולקת ל־100 תלמידים ו־37 מהם מרכיבים משקפיים,
+                אז 37% מהכיתה מרכיבים משקפיים.
+              </p>
+              <div class="focus-card compact">
+                <h3>משימה קצרה</h3>
+                <p>הזיזו את הסרגל ל־10%, ל־50%, ואז ל־100%. שימו לב: המספר באחוז הוא מספר המשבצות הצבועות.</p>
+              </div>
+              <div class="key-box">
+                <strong>שאלת בדיקה:</strong>
+                מהו השלם? בלי לזהות את השלם, אי אפשר לפרש את האחוז.
+              </div>
+            </article>
+
+            <article class="visual-card" aria-label="מעבדת אחוזים">
+              <h3>מעבדת 100 חלקים</h3>
+              <div id="hundredGrid" class="hundred-grid" aria-hidden="true"></div>
+              <label class="range-label" for="percentSlider">
+                בחרו אחוז:
+                <strong><span id="percentValue">37</span>%</strong>
+              </label>
+              <input id="percentSlider" type="range" min="0" max="100" value="37" />
+              <p id="percentSentence" class="math-line">37 מתוך 100 חלקים צבועים.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">תרגול חישובי</p>
+          <h2>כמה מתוך 100?</h2>
+          <p class="calm-note">כאן אין טריק: אם השלם הוא 100, האחוז הוא פשוט מספר החלקים.</p>
+          <div class="drill" data-drill="idea-basic"></div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">טקסט לחישוב</p>
+          <h2>קראו, זהו את השלם, ואז חשבו</h2>
+          <div class="drill" data-drill="idea-text"></div>
+        </section>
+
+        <nav class="pager" aria-label="מעבר בין תחנות">
+          <a href="index.html">חזרה לשער</a>
+          <a href="station-2.html">לתחנה 2</a>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>

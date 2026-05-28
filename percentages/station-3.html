@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>תחנה 3: למצוא אחוז מכמות</title>
+    <link rel="stylesheet" href="styles.css?v=20260528-2" />
+    <script src="script.js?v=20260528-2" defer></script>
+  </head>
+  <body data-page="calculate">
+    <header class="topbar">
+      <a class="brand" href="index.html">אחוזים בגובה העיניים</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <a href="station-1.html">מה זה אחוז?</a>
+        <a href="station-2.html">ייצוגים</a>
+        <a href="station-3.html">חישוב</a>
+        <a href="station-4.html">שינוי באחוזים</a>
+        <a href="station-5.html">בעיות מילוליות</a>
+        <a href="station-6.html">תרגול מסכם</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="sidebar" aria-label="התקדמות בקורס">
+        <section class="panel progress-panel">
+          <p class="eyebrow">תחנה 3</p>
+          <h1>אחוז מכמות</h1>
+          <p>כאן עוברים מהרעיון “מתוך 100” לחישוב עם כמות אמיתית.</p>
+          <div class="progress-meter" aria-label="התקדמות">
+            <span id="progressFill"></span>
+          </div>
+          <p id="progressText" class="progress-text">0 מתוך 6 תחנות הושלמו</p>
+        </section>
+        <section class="panel nav-panel">
+          <a href="index.html">לשער הקורס</a>
+          <a href="station-1.html">1. מה זה אחוז?</a>
+          <a href="station-2.html">2. ייצוגים</a>
+          <a class="active" href="station-3.html">3. חישוב</a>
+          <a href="station-4.html">4. שינוי</a>
+          <a href="station-5.html">5. בעיות מילוליות</a>
+          <a href="station-6.html">6. תרגול מסכם</a>
+        </section>
+      </aside>
+
+      <div class="content">
+        <section class="lesson panel">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">רעיון מרכזי</p>
+              <h2>כמות × אחוז ÷ 100</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="calculate">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <p>
+                כדי למצוא 30% מ־80, אפשר לחשב 80 × 30 ÷ 100 = 24.
+                דרך חשיבה נוספת: 10% מ־80 הם 8, ולכן 30% הם 3 פעמים 8.
+              </p>
+              <div class="focus-card compact">
+                <h3>שיטת 3 צעדים</h3>
+                <ol class="method-list">
+                  <li>מה הכמות השלמה?</li>
+                  <li>איזה אחוז מבקשים?</li>
+                  <li>כמות × אחוז ÷ 100</li>
+                </ol>
+              </div>
+              <div class="steps">
+                <span>100% הם 80</span>
+                <span>10% הם 8</span>
+                <span>30% הם 24</span>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>מחשבון חשיבה</h3>
+              <div class="formula-box">
+                <span>אחוז מהכמות</span>
+                <strong>כמות × אחוז ÷ 100</strong>
+              </div>
+              <div class="chip-row">
+                <span>10% = לחלק ב־10</span>
+                <span>50% = חצי</span>
+                <span>25% = רבע</span>
+                <span>1% = לחלק ב־100</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">תרגול חישובי</p>
+          <h2>מצאו אחוז מתוך כמות</h2>
+          <div class="drill" data-drill="amount-basic"></div>
+        </section>
+
+        <section class="lesson panel">
+          <p class="eyebrow">טקסט לחישוב</p>
+          <h2>איזו פעולה מסתתרת בסיפור?</h2>
+          <p class="calm-note">בבעיות מילוליות אל תרוצו לחישוב. קודם מצאו את הכמות השלמה, ואז את האחוז.</p>
+          <div class="drill" data-drill="amount-text"></div>
+        </section>
+
+        <nav class="pager" aria-label="מעבר בין תחנות">
+          <a href="station-2.html">לתחנה 2</a>
+          <a href="station-4.html">לתחנה 4</a>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>
