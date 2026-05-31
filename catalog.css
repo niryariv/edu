@@ -2,12 +2,13 @@
   color-scheme: light;
   --bg: #f6f8fc;
   --surface: #ffffff;
+  --surface-soft: #eef5f1;
   --ink: #202124;
   --muted: #5f6877;
   --line: #dbe1ea;
   --blue: #2266d2;
   --green: #16805c;
-  --gold: #f2b84b;
+  --gold: #a66b00;
   --shadow: 0 18px 38px rgba(24, 34, 54, 0.1);
   --radius: 8px;
   --font: "Noto Sans Hebrew", "Assistant", "Rubik", Arial, sans-serif;
@@ -40,14 +41,18 @@ a {
 
 .catalog {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1160px;
   margin: 0 auto;
-  padding: clamp(28px, 6vw, 72px) clamp(16px, 5vw, 48px);
+  padding: clamp(24px, 5vw, 64px) clamp(16px, 5vw, 48px);
 }
 
 .hero {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero__copy {
   max-width: 760px;
-  margin-bottom: 28px;
 }
 
 .eyebrow {
@@ -56,21 +61,43 @@ a {
   font-weight: 900;
 }
 
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
 h1 {
-  margin: 0 0 14px;
-  font-size: clamp(2.1rem, 5vw, 4rem);
+  max-width: 860px;
+  font-size: clamp(2rem, 4.8vw, 4rem);
   line-height: 1.1;
 }
 
+h2 {
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  line-height: 1.2;
+}
+
+h3 {
+  color: var(--blue);
+  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+  line-height: 1.25;
+}
+
 p {
-  margin: 0;
   color: var(--muted);
-  font-size: 1.08rem;
+  font-size: 1.06rem;
   line-height: 1.75;
+}
+
+.hero p:not(.eyebrow) {
+  margin-top: 16px;
 }
 
 h1,
 h2,
+h3,
 p,
 a,
 span,
@@ -78,55 +105,120 @@ strong {
   overflow-wrap: break-word;
 }
 
+.course-links a,
+.resource-list a {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.course-links a:hover,
+.resource-list a:hover {
+  transform: translateY(-2px);
+  border-color: #9ebcf7;
+}
+
+.section {
+  padding-top: clamp(30px, 5vw, 54px);
+}
+
+.section__header {
+  margin-bottom: 18px;
+}
+
 .courses {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 18px;
-  margin-top: 34px;
 }
 
 .course-card {
   display: grid;
-  gap: 14px;
-  min-height: 260px;
+  gap: 22px;
+  min-height: 330px;
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
-  transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
-.course-card:hover {
-  transform: translateY(-2px);
-  border-color: #9ebcf7;
+.course-card p {
+  margin-top: 12px;
 }
 
 .course-tag {
+  display: inline-flex;
   width: fit-content;
   max-width: 100%;
+  margin-bottom: 14px;
   padding: 6px 10px;
   border-radius: var(--radius);
   background: #fff5df;
-  color: #8a5a00;
+  color: var(--gold);
   font-weight: 900;
 }
 
-.course-card h2 {
-  margin: 0;
-  color: var(--blue);
-  font-size: clamp(1.45rem, 3vw, 2rem);
-}
-
-.course-card strong {
+.course-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
   align-self: end;
-  color: var(--green);
-  font-weight: 900;
 }
 
-@media (max-width: 520px) {
-  .catalog {
-    padding-inline: 14px;
+.course-links a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  color: var(--blue);
+  font-weight: 900;
+  text-align: center;
+}
+
+.course-links .primary-link {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.open-source {
+  margin-top: 8px;
+}
+
+.resource-list {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+}
+
+.resource-list a {
+  display: grid;
+  gap: 3px;
+  padding: 14px;
+}
+
+.resource-list span {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.resource-list strong {
+  color: var(--ink);
+  direction: ltr;
+  font-weight: 900;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .course-links {
+    grid-template-columns: 1fr;
   }
 
   .course-card {

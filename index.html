@@ -3,30 +3,91 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>קורסים בעברית</title>
-    <link rel="stylesheet" href="catalog.css?v=20260528-1" />
+    <title>edu | שיעורים פתוחים בעברית</title>
+    <link rel="stylesheet" href="catalog.css?v=20260531-1" />
   </head>
   <body>
     <main class="catalog">
       <header class="hero">
-        <p class="eyebrow">מרכז קורסים</p>
-        <h1>קורסים אינטראקטיביים בעברית</h1>
-        <p>
-          בחרו קורס והמשיכו לעמוד עצמאי עם שיעורים, ויזואליזציות ותרגול.
-          כל קורס נמצא בתיקייה משלו כדי שיהיה קל להוסיף קורסים נוספים בהמשך.
-        </p>
+        <div class="hero__copy">
+          <p class="eyebrow">edu / אינדקס פתוח</p>
+          <h1>שיעורים אינטראקטיביים, קוד פתוח, ותהליך יצירה גלוי</h1>
+          <p>
+            כאן נמצא דף הבית של פרויקטי הלמידה. כל כיתה מקבלת עמוד ציבורי,
+            קישור לקוד המקור שלה, וקישור להנחיות שבעזרתן אנחנו בונים ומשפרים
+            שיעורים חדשים.
+          </p>
+        </div>
       </header>
 
-      <section class="courses" aria-label="רשימת קורסים">
-        <a class="course-card" href="percentages/">
-          <span class="course-tag">מתמטיקה</span>
-          <h2>אחוזים בגובה העיניים</h2>
-          <p>
-            קורס לכיתה ו׳-ז׳ על אחוזים, שברים ועשרוניים, חישובי הנחה ועלייה,
-            ובעיקר הבנת בעיות מילוליות והפיכתן לחישוב.
-          </p>
-          <strong>כניסה לקורס</strong>
-        </a>
+      <section class="section" aria-labelledby="classes-title">
+        <div class="section__header">
+          <p class="eyebrow">כיתות פעילות</p>
+          <h2 id="classes-title">מתחילים בשני שיעורים קיימים</h2>
+        </div>
+
+        <div class="courses">
+          <article class="course-card">
+            <div>
+              <span class="course-tag">מתמטיקה</span>
+              <h3>אחוזים בגובה העיניים</h3>
+              <p>
+                מסלול לכיתה ו׳-ז׳ על אחוזים, שברים ועשרוניים, חישובי הנחה
+                ועלייה, ובעיקר קריאת בעיות מילוליות והפיכתן לחישוב.
+              </p>
+            </div>
+            <div class="course-links" aria-label="קישורים לאחוזים">
+              <a class="primary-link" href="percentages/">כניסה לשיעור</a>
+              <a href="https://github.com/niryariv/edu/tree/main/percentages">
+                קוד המקור
+              </a>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div>
+              <span class="course-tag">מתמטיקה והיסטוריה</span>
+              <h3>ספרות רומיות</h3>
+              <p>
+                שיעור עצמאי על קריאה, כתיבה והמרה של ספרות רומיות, עם
+                דוגמאות, רמזים ותרגול אינטראקטיבי.
+              </p>
+            </div>
+            <div class="course-links" aria-label="קישורים לספרות רומיות">
+              <a class="primary-link" href="https://niryariv.github.io/edu_roman_numerals/">
+                כניסה לשיעור
+              </a>
+              <a href="https://github.com/niryariv/edu_roman_numerals">
+                המאגר ב-GitHub
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section open-source" aria-labelledby="open-title">
+        <div class="section__header">
+          <p class="eyebrow">איך זה בנוי</p>
+          <h2 id="open-title">הקוד, המאגרים וההנחיות פתוחים</h2>
+        </div>
+        <div class="resource-list">
+          <a href="https://github.com/niryariv/edu">
+            <span>מאגר האינדקס</span>
+            <strong>github.com/niryariv/edu</strong>
+          </a>
+          <a href="https://github.com/niryariv/edu/blob/main/prompts/lesson-builder.md">
+            <span>הפרומפט הפעיל</span>
+            <strong>github.com/niryariv/edu/blob/main/prompts/lesson-builder.md</strong>
+          </a>
+          <a href="https://github.com/niryariv/edu/blob/main/skills/lesson-builder/SKILL.md">
+            <span>הסקיל ליצירת שיעורים</span>
+            <strong>github.com/niryariv/edu/blob/main/skills/lesson-builder/SKILL.md</strong>
+          </a>
+          <a href="https://github.com/niryariv/edu/tree/main/prompts">
+            <span>יומן איטרציות</span>
+            <strong>github.com/niryariv/edu/tree/main/prompts</strong>
+          </a>
+        </div>
       </section>
     </main>
   </body>
