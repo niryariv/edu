@@ -18,7 +18,9 @@ Use this skill for lessons that belong in the `niryariv/edu` learning index or i
 7. Keep links to the live lesson, source code, and `edu` index easy to find.
 8. Update `/index.html` in `edu` when adding a lesson or changing public links.
 9. Add or update a short note in `/prompts/` when the prompt/process changes.
-10. Verify locally in a browser before finishing.
+10. For sibling lesson repositories, maintain `AGENTS.md` with this shared guidance.
+11. Make the live lesson content expose links to the main `edu` index, source repo, and active prompt.
+12. Verify locally in a browser before finishing.
 
 ## Lesson Quality Bar
 
@@ -28,6 +30,7 @@ Use this skill for lessons that belong in the `niryariv/edu` learning index or i
 - Visuals clarify the concept, not just decorate the page.
 - Navigation works without a build step unless the repository already has one.
 - The public page exposes where the source code and prompt/skill live.
+- Sibling lesson repositories carry the shared repo guidance in `AGENTS.md`.
 
 ## Links To Maintain
 
@@ -35,3 +38,4 @@ Use this skill for lessons that belong in the `niryariv/edu` learning index or i
 - Main source repo: `https://github.com/niryariv/edu`
 - Active prompt: `/prompts/lesson-builder.md`
 - Active skill: `/skills/lesson-builder/SKILL.md`
+- Shared repo guidance file: `AGENTS.md` in each sibling lesson repo

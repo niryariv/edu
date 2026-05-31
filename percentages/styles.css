@@ -127,6 +127,30 @@ select {
   color: var(--blue);
 }
 
+.open-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-inline-start: auto;
+  font-size: 0.86rem;
+}
+
+.open-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--blue);
+  font-weight: 800;
+  background: #fff;
+}
+
+.open-links a:hover {
+  background: #edf3ff;
+}
+
 .shell {
   display: grid;
   grid-template-columns: minmax(260px, 330px) minmax(0, 1fr);

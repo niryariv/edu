@@ -25,6 +25,8 @@ The lesson should:
 - work well on mobile and desktop;
 - be published as static HTML/CSS/JS unless the lesson genuinely needs a framework;
 - include visible links back to the `edu` index and to the lesson source repository.
+- include a visible link to the active prompt or prompt history so the creation process is discoverable.
+- keep `AGENTS.md` in sibling lesson repositories aligned with the shared lesson-builder guidance.
 
 Before finishing:
 
@@ -40,6 +42,14 @@ Before finishing:
 - Percentages source: `https://github.com/niryariv/edu/tree/main/percentages`
 - Roman Numerals live page: `https://niryariv.github.io/edu_roman_numerals/`
 - Roman Numerals source: `https://github.com/niryariv/edu_roman_numerals`
+- Newton's Laws live page: `https://niryariv.github.io/edu-physics-game/`
+- Newton's Laws source: `https://github.com/niryariv/edu-physics-game`
+- Probability live page: `https://niryariv.github.io/edu-probability/`
+- Probability source: `https://github.com/niryariv/edu-probability`
+- Chemistry live page: `https://niryariv.github.io/chemistry_site/`
+- Chemistry source: `https://github.com/niryariv/chemistry_site`
+- Shahar Math live page: `https://niryariv.github.io/shahar_math/`
+- Shahar Math source: `https://github.com/niryariv/shahar_math`
 
 ## Iteration Notes
 
