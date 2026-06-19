@@ -21,7 +21,7 @@
       <nav class="open-links" aria-label="קישורי קוד פתוח">
         <a href="../">אינדקס edu</a>
         <a href="https://github.com/niryariv/edu/tree/main/decimals">קוד מקור</a>
-        <a href="https://github.com/niryariv/edu/blob/main/prompts/iteration-004.md">Prompt</a>
+        <a href="https://github.com/niryariv/edu/blob/main/prompts/iteration-005.md">Prompt</a>
       </nav>
     </header>
 
@@ -56,13 +56,41 @@
           </div>
           <div class="two-col">
             <article>
-              <div class="formula-box ltr-box">
-                <strong>2.35 + 0.7 = 2.35 + 0.70 = 3.05</strong>
-                <span>מותר להוסיף אפסים מימין כי הערך לא משתנה.</span>
-              </div>
-              <div class="formula-box ltr-box">
-                <strong>5 - 2.8 = 5.0 - 2.8 = 2.2</strong>
-                <span>במספר שלם אפשר לכתוב נקודה ואפסים לפי הצורך.</span>
+              <div class="stacked-work">
+                <h3>כך מסדרים בטור</h3>
+                <p>
+                  קודם כותבים את הנקודות אחת מתחת לשנייה. אם חסרות ספרות
+                  אחרי הנקודה, מוסיפים אפסים מימין כדי שהעמודות יתאימו.
+                </p>
+                <div class="stacked-examples" aria-label="דוגמאות לחיבור וחיסור עשרוניים בטור">
+                  <div class="stack-card">
+                    <strong>1.2 + 11.03</strong>
+                    <div class="stacked-calc" aria-label="1.20 ועוד 11.03 שווה 12.23">
+                      <div class="calc-row"><span class="calc-op"></span><span class="calc-int">1</span><span class="calc-dot">.</span><span class="calc-frac">20</span></div>
+                      <div class="calc-row"><span class="calc-op">+</span><span class="calc-int">11</span><span class="calc-dot">.</span><span class="calc-frac">03</span></div>
+                      <div class="calc-rule"></div>
+                      <div class="calc-row result"><span class="calc-op"></span><span class="calc-int">12</span><span class="calc-dot">.</span><span class="calc-frac">23</span></div>
+                    </div>
+                  </div>
+                  <div class="stack-card">
+                    <strong>12.123 + 1.2</strong>
+                    <div class="stacked-calc" aria-label="12.123 ועוד 1.200 שווה 13.323">
+                      <div class="calc-row"><span class="calc-op"></span><span class="calc-int">12</span><span class="calc-dot">.</span><span class="calc-frac">123</span></div>
+                      <div class="calc-row"><span class="calc-op">+</span><span class="calc-int">1</span><span class="calc-dot">.</span><span class="calc-frac">200</span></div>
+                      <div class="calc-rule"></div>
+                      <div class="calc-row result"><span class="calc-op"></span><span class="calc-int">13</span><span class="calc-dot">.</span><span class="calc-frac">323</span></div>
+                    </div>
+                  </div>
+                  <div class="stack-card">
+                    <strong>5 - 2.8</strong>
+                    <div class="stacked-calc" aria-label="5.0 פחות 2.8 שווה 2.2">
+                      <div class="calc-row"><span class="calc-op"></span><span class="calc-int">5</span><span class="calc-dot">.</span><span class="calc-frac">0</span></div>
+                      <div class="calc-row"><span class="calc-op">-</span><span class="calc-int">2</span><span class="calc-dot">.</span><span class="calc-frac">8</span></div>
+                      <div class="calc-rule"></div>
+                      <div class="calc-row result"><span class="calc-op"></span><span class="calc-int">2</span><span class="calc-dot">.</span><span class="calc-frac">2</span></div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </article>
             <article class="visual-card">
