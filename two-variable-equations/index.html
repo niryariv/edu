@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>משוואות בשני נעלמים בגובה העיניים</title>
+    <link rel="stylesheet" href="styles.css?v=20260723-1" />
+    <script src="script.js?v=20260723-1" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html">שני נעלמים</a>
+      <nav class="topnav" aria-label="ניווט ראשי">
+        <a href="#station-1">פתרון כזוג</a>
+        <a href="#station-2">שתי משוואות</a>
+        <a href="#station-3">הצבה</a>
+        <a href="#station-4">חיבור וחיסור</a>
+        <a href="#station-5">טקסט</a>
+        <a href="#station-6">מסכם</a>
+      </nav>
+      <nav class="open-links" aria-label="קישורי קוד פתוח">
+        <a href="../">אינדקס edu</a>
+        <a href="https://github.com/niryariv/edu/tree/main/two-variable-equations">קוד מקור</a>
+        <a href="https://github.com/niryariv/edu/blob/main/prompts/iteration-006.md">Prompt</a>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <aside class="sidebar" aria-label="התקדמות בקורס">
+        <section class="panel progress-panel">
+          <p class="eyebrow">מסלול אישי</p>
+          <h1>פתרון משוואות בשני נעלמים</h1>
+          <p>
+            לומדים לחשוב על פתרון כזוג מספרים, ואז עוברים בהדרגה להצבה,
+            חיבור וחיסור משוואות, ובעיות מילוליות.
+          </p>
+          <div class="progress-meter" aria-label="התקדמות">
+            <span id="progressFill"></span>
+          </div>
+          <p id="progressText" class="progress-text">0 מתוך 6 תחנות הושלמו</p>
+        </section>
+
+        <section class="panel nav-panel">
+          <a href="#station-1">1. פתרון הוא זוג</a>
+          <a href="#station-2">2. שתי משוואות יחד</a>
+          <a href="#station-3">3. פתרון בהצבה</a>
+          <a href="#station-4">4. חיבור וחיסור</a>
+          <a href="#station-5">5. בעיות מילוליות</a>
+          <a href="#station-6">6. תרגול מסכם</a>
+        </section>
+      </aside>
+
+      <div class="content">
+        <section class="lesson panel hero-panel" id="start">
+          <p class="eyebrow">שער הקורס</p>
+          <h2>המטרה: למצוא זוג שמתאים לשני תנאים בבת אחת</h2>
+          <p>
+            במשוואה עם שני נעלמים לא מחפשים מספר אחד. מחפשים זוג, למשל
+            <span class="math">(4, 3)</span>, שבו ערך אחד מתאים ל־<span class="math">x</span>
+            והערך השני מתאים ל־<span class="math">y</span>.
+          </p>
+
+          <div class="focus-card">
+            <h3>שיטת העבודה בכל תחנה</h3>
+            <ol class="method-list">
+              <li>קוראים את הרעיון המרכזי ומנסים דוגמה אחת.</li>
+              <li>בודקים זוגות בהצבה לפני שמתחילים לפתור.</li>
+              <li>אם טעיתם, קוראים את המשוב ומנסים שאלה חדשה.</li>
+            </ol>
+          </div>
+
+          <div class="course-grid">
+            <a class="course-card" href="#station-1">
+              <span>תחנה 1</span>
+              <strong>פתרון הוא זוג</strong>
+              <p>בודקים אם זוג מספרים מתאים למשוואה אחת.</p>
+            </a>
+            <a class="course-card" href="#station-2">
+              <span>תחנה 2</span>
+              <strong>שתי משוואות יחד</strong>
+              <p>אותו זוג חייב לעבוד בשני התנאים.</p>
+            </a>
+            <a class="course-card" href="#station-3">
+              <span>תחנה 3</span>
+              <strong>הצבה</strong>
+              <p>כשנעלם אחד כבר מבודד, מציבים אותו במשוואה השנייה.</p>
+            </a>
+            <a class="course-card" href="#station-4">
+              <span>תחנה 4</span>
+              <strong>חיבור וחיסור</strong>
+              <p>גורמים לנעלם אחד להיעלם כדי למצוא את השני.</p>
+            </a>
+            <a class="course-card" href="#station-5">
+              <span>תחנה 5</span>
+              <strong>בעיות מילוליות</strong>
+              <p>מתרגמים סיפור לשתי משוואות ואז בודקים הגיון.</p>
+            </a>
+            <a class="course-card" href="#station-6">
+              <span>תחנה 6</span>
+              <strong>תרגול מסכם</strong>
+              <p>שאלות מעורבות עם מלכודות נפוצות.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="lesson panel" id="station-1">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 1</p>
+              <h2>פתרון הוא זוג מספרים</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="pairs">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <h3>משוואה אחת בדרך כלל לא מספיקה</h3>
+              <p>
+                במשוואה <span class="math">x + y = 7</span> יש הרבה זוגות
+                שעובדים: <span class="math">(0, 7)</span>,
+                <span class="math">(3, 4)</span>, וגם
+                <span class="math">(10, -3)</span>. כל זוג כזה הוא פתרון
+                למשוואה אחת.
+              </p>
+              <div class="key-box">
+                <strong>בדיקת הצבה:</strong>
+                <span>שמים את המספרים במקום האותיות ובודקים אם מתקבל משפט אמת.</span>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>בודקים זוג</h3>
+              <p class="math-line">x + y = 7</p>
+              <div class="pair-tester" aria-label="בודק זוג מספרים">
+                <label>x <input id="pairX" type="number" value="3" /></label>
+                <label>y <input id="pairY" type="number" value="4" /></label>
+                <div class="equation-result" id="pairResult"></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="drill" data-drill="one-equation"></div>
+        </section>
+
+        <section class="lesson panel" id="station-2">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 2</p>
+              <h2>שתי משוואות מצמצמות את האפשרויות</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="system">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <h3>אותו זוג צריך להתאים לשתיהן</h3>
+              <p>
+                אם יש לנו גם <span class="math">x + y = 7</span> וגם
+                <span class="math">x - y = 1</span>, הזוג
+                <span class="math">(4, 3)</span> מתאים לשתי המשוואות.
+              </p>
+              <div class="worked-system">
+                <div><span>x + y = 7</span><strong>4 + 3 = 7</strong></div>
+                <div><span>x - y = 1</span><strong>4 - 3 = 1</strong></div>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>נקודת חיתוך</h3>
+              <svg class="plane" viewBox="0 0 320 220" role="img" aria-label="שני ישרים נחתכים בנקודה אחת">
+                <path class="grid-line" d="M40 20V200M80 20V200M120 20V200M160 20V200M200 20V200M240 20V200M280 20V200" />
+                <path class="grid-line" d="M30 40H300M30 80H300M30 120H300M30 160H300M30 200H300" />
+                <path class="axis" d="M30 180H300M60 20V205" />
+                <path class="line-a" d="M35 195L290 60" />
+                <path class="line-b" d="M45 35L295 170" />
+                <circle class="hit" cx="166" cy="125" r="7" />
+                <text x="176" y="118">(4,3)</text>
+              </svg>
+              <p>בגרף, הפתרון של מערכת המשוואות הוא נקודת החיתוך של שני הקווים.</p>
+            </article>
+          </div>
+
+          <div class="drill" data-drill="two-equations"></div>
+        </section>
+
+        <section class="lesson panel" id="station-3">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 3</p>
+              <h2>פתרון בהצבה</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="substitution">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <h3>כשאחת האותיות כבר לבד</h3>
+              <p>
+                במערכת <span class="math">y = x + 2</span> וגם
+                <span class="math">x + y = 10</span>, מחליפים את
+                <span class="math">y</span> במה שהוא שווה לו:
+              </p>
+              <div class="steps">
+                <span>x + (x + 2) = 10</span>
+                <span>2x + 2 = 10</span>
+                <span>2x = 8</span>
+                <strong>x = 4, y = 6</strong>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>מה מחליפים?</h3>
+              <div class="substitution-model">
+                <span>x + y = 10</span>
+                <span class="arrow">↓</span>
+                <span>x + (x + 2) = 10</span>
+              </div>
+              <p>האות <span class="math">y</span> לא נעלמת. היא מוחלפת בביטוי שווה.</p>
+            </article>
+          </div>
+
+          <div class="drill" data-drill="substitution"></div>
+        </section>
+
+        <section class="lesson panel" id="station-4">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 4</p>
+              <h2>פתרון בחיבור או חיסור משוואות</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="elimination">סיימתי</button>
+          </div>
+
+          <div class="two-col">
+            <article>
+              <h3>מחסרים שתי שורות כדי להעלים נעלם</h3>
+              <p>
+                אם לשתי המשוואות יש אותו <span class="math">+y</span>,
+                אפשר לחסר אותן. כך <span class="math">y - y</span> הופך ל־0.
+              </p>
+              <div class="column-work" aria-label="פתרון בטור">
+                <div><span>2x + y</span><span>= 11</span></div>
+                <div><span>-(x + y</span><span>= 7)</span></div>
+                <hr />
+                <div class="result"><span>x</span><span>= 4</span></div>
+              </div>
+            </article>
+
+            <article class="visual-card">
+              <h3>מה נעלם?</h3>
+              <div class="cancel-model">
+                <span>2x</span><span>+</span><span class="cancel">y</span>
+                <span>-</span>
+                <span>x</span><span>-</span><span class="cancel">y</span>
+                <strong>= x</strong>
+              </div>
+              <p>אחרי שמוצאים נעלם אחד, מציבים אותו באחת המשוואות כדי למצוא את השני.</p>
+            </article>
+          </div>
+
+          <div class="drill" data-drill="elimination"></div>
+        </section>
+
+        <section class="lesson panel" id="station-5">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 5</p>
+              <h2>בעיות מילוליות: קודם מגדירים נעלמים</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="text">סיימתי</button>
+          </div>
+
+          <div class="focus-card">
+            <h3>שיטת תרגום מטקסט למשוואות</h3>
+            <ol class="method-list">
+              <li>מגדירים: מהו <span class="math">x</span> ומהו <span class="math">y</span>?</li>
+              <li>מחפשים שני משפטים שנותנים שני תנאים.</li>
+              <li>פותרים, ואז בודקים אם התשובה הגיונית בסיפור.</li>
+            </ol>
+          </div>
+
+          <div class="drill" data-drill="word-problems"></div>
+        </section>
+
+        <section class="lesson panel" id="station-6">
+          <div class="lesson-head">
+            <div>
+              <p class="eyebrow">תחנה 6</p>
+              <h2>תרגול מסכם מעורב</h2>
+            </div>
+            <button class="small-button complete-button" type="button" data-complete="review">סיימתי</button>
+          </div>
+
+          <div class="strategy-grid">
+            <article>
+              <strong>בדיקה</strong>
+              <span>מציבים את הזוג בשתי המשוואות.</span>
+            </article>
+            <article>
+              <strong>הצבה</strong>
+              <span>נוח כשכתוב <span class="math">y = ...</span> או <span class="math">x = ...</span>.</span>
+            </article>
+            <article>
+              <strong>חיסור</strong>
+              <span>נוח כשיש אותו נעלם באותו סימן.</span>
+            </article>
+            <article>
+              <strong>הגיון</strong>
+              <span>מחיר, גיל או כמות לא אמורים לצאת שליליים.</span>
+            </article>
+          </div>
+
+          <div class="drill" data-drill="review"></div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
