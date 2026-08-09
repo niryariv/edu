@@ -66,3 +66,4 @@ Before finishing:
 - `prompts/iteration-002.md`: add actual images to explain shapes and concepts.
 - `prompts/iteration-007.md`: adapt lesson design to Omri's observed mission-driven, concrete, feedback-rich learning process.
 - `prompts/iteration-008.md`: build the mission-based Geometry Arena introduction course.
+- `prompts/iteration-009.md`: make the first Geometry Arena action self-explanatory without outside instructions.

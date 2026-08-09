@@ -476,6 +476,31 @@ h2 {
   line-height: 1.7;
 }
 
+.action-now {
+  margin: 18px 0 12px;
+  padding: 16px 18px;
+  display: grid;
+  gap: 5px;
+  border-radius: 16px;
+  color: #061019;
+  background: linear-gradient(135deg, var(--cyan), var(--lime));
+  box-shadow: 0 14px 34px rgba(57, 217, 255, 0.15);
+}
+
+.action-now span {
+  color: #155164;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.action-now strong {
+  font-size: clamp(1.08rem, 2.4vw, 1.35rem);
+}
+
+.action-now small {
+  font-weight: 650;
+}
+
 .question {
   color: var(--ink);
   font-weight: 750;
@@ -490,7 +515,7 @@ h2 {
 }
 
 .click-arena::after {
-  content: "לחצו במקום כלשהו בזירה";
+  content: "לחיצה אחת בתוך הלוח = בחירת מקום לשחקן A";
   position: absolute;
   inset: auto 16px 14px;
   color: rgba(244, 247, 255, 0.42);
@@ -505,6 +530,34 @@ h2 {
   color: rgba(57, 217, 255, 0.7);
   font-size: 0.74rem;
   font-weight: 800;
+}
+
+.arena-prompt {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 50%;
+  min-width: 190px;
+  padding: 13px 18px;
+  display: grid;
+  gap: 4px;
+  border: 1px solid rgba(57, 217, 255, 0.5);
+  border-radius: 16px;
+  text-align: center;
+  background: rgba(17, 26, 45, 0.93);
+  box-shadow: 0 0 0 10px rgba(57, 217, 255, 0.06), 0 14px 32px rgba(0, 0, 0, 0.34);
+  transform: translate(50%, -50%);
+  pointer-events: none;
+  animation: prompt-pulse 1.8s ease-in-out infinite;
+}
+
+.arena-prompt b {
+  color: var(--cyan);
+  font-size: 1.08rem;
+}
+
+.arena-prompt small {
+  color: var(--muted);
 }
 
 .spawn-marker {
@@ -923,6 +976,12 @@ footer div {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes prompt-pulse {
+  50% {
+    box-shadow: 0 0 0 16px rgba(57, 217, 255, 0.02), 0 14px 32px rgba(0, 0, 0, 0.34);
   }
 }
 

@@ -148,8 +148,9 @@ function placeSpawn(event) {
   marker.style.left = x + "px";
   marker.style.top = y + "px";
   marker.hidden = false;
+  byId("spawnPrompt").hidden = true;
   byId("pointReflection").hidden = false;
-  setFeedback("spawnFeedback", "הצבתם את A במקום מדויק. עכשיו נבדוק מה הייתה הראיה החשובה.", "success");
+  setFeedback("spawnFeedback", "השחקן A יופיע כאן. בחרתם מקום אחד מדויק בתוך הזירה.", "success");
 }
 
 byId("spawnArena").addEventListener("click", placeSpawn);

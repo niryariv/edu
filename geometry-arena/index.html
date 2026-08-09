@@ -88,23 +88,31 @@
         <div class="missions">
           <section class="mission-card" id="mission-1" data-stage="1" aria-labelledby="mission-1-title">
             <div class="mission-card__topline">
-              <p class="eyebrow">משימה 1 · התנסות</p>
+              <p class="eyebrow">משימה 1 · בוחרים מקום</p>
               <span class="stage-badge">צעד מודרך</span>
             </div>
-            <h2 id="mission-1-title">היכן השחקן מתחיל?</h2>
-            <p class="instruction">לחצו פעם אחת על המקום המדויק שבו תרצו להציב את השחקן.</p>
+            <h2 id="mission-1-title">בחרו איפה השחקן A יופיע</h2>
+            <div class="action-now">
+              <span>מה עושים עכשיו?</span>
+              <strong>לחצו פעם אחת בתוך הלוח המשובץ.</strong>
+              <small>העיגול הצהוב A יופיע במקום שבו לחצתם.</small>
+            </div>
 
-            <div class="click-arena" id="spawnArena" role="button" tabindex="0" aria-label="זירה ריקה. לחצו כדי לבחור נקודת התחלה">
+            <div class="click-arena" id="spawnArena" role="button" tabindex="0" aria-label="לחצו פעם אחת בתוך הלוח כדי למקם את השחקן A">
               <span class="grid-label">זירה 01</span>
+              <span class="arena-prompt" id="spawnPrompt" aria-hidden="true">
+                <b>👆 לחצו כאן</b>
+                <small>אפשר לבחור כל מקום בלוח</small>
+              </span>
               <span class="spawn-marker" id="spawnMarker" hidden>A</span>
             </div>
             <p class="feedback" id="spawnFeedback" aria-live="polite"></p>
 
             <div class="follow-up" id="pointReflection" hidden>
-              <p class="question">מה היה חשוב בפעולה הזאת?</p>
+              <p class="question">מה בחרתם כשלחצתם על הלוח?</p>
               <div class="choice-row" data-group="point-reflection">
-                <button type="button" data-value="location">המקום המדויק</button>
-                <button type="button" data-value="length">האורך של הסימון</button>
+                <button type="button" data-value="location">מקום מדויק בזירה</button>
+                <button type="button" data-value="length">אורך של קו</button>
               </div>
               <p class="feedback" id="pointReflectionFeedback" aria-live="polite"></p>
             </div>
