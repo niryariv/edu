@@ -10,6 +10,7 @@ Create a student-facing lesson that teaches one focused topic clearly, in Hebrew
 - a live page that can be published with GitHub Pages;
 - source code that a visitor can find from the `edu` index;
 - short explanations, concrete examples, visual support, and interactive practice;
+- authentic missions that develop independent problem solving, not just successful execution;
 - a clear path for future iteration.
 
 ## Working Prompt
@@ -19,9 +20,15 @@ Build an interactive Hebrew lesson for a middle-school student on: `[TOPIC]`.
 The lesson should:
 
 - open directly into the learning experience, not a marketing page;
+- open with a concrete mission and provide a meaningful first win within 5–10 minutes;
 - explain the concept through small steps, examples, and visual representations;
-- include practice with immediate feedback and hints;
+- use the loop mission → observe → predict → act → check evidence → explain → transfer;
+- present one primary action at a time when the interface or concept is new;
+- use a persistent state panel: what we know / what we think / what we test next / what happened;
+- include practice with immediate feedback and a hint ladder that fades as competence grows;
+- ask for a short explanation after success and verify mastery with a different case;
 - make the student translate text or situations into the relevant calculation, rule, or idea;
+- distinguish safe observation, reversible edits, and consequential actions; require an adult for passwords, permissions, deletion, system settings, purchases, or publication;
 - work well on mobile and desktop;
 - be published as static HTML/CSS/JS unless the lesson genuinely needs a framework;
 - include visible links back to the `edu` index and to the lesson source repository.
@@ -33,6 +40,8 @@ Before finishing:
 - verify the page locally in a browser;
 - check that text does not overflow on mobile;
 - check that interactive controls work;
+- check that a novice never needs to retain a long transient instruction while acting;
+- check that completion requires at least one prediction, one evidence-based explanation, and one transfer task;
 - update the `edu` index if this is a new lesson or if source/live links changed;
 - add a short prompt iteration note under `prompts/`.
 
@@ -55,3 +64,5 @@ Before finishing:
 
 - `prompts/iteration-001.md`: first geometry site request and lesson navigation.
 - `prompts/iteration-002.md`: add actual images to explain shapes and concepts.
+- `prompts/iteration-007.md`: adapt lesson design to Omri's observed mission-driven, concrete, feedback-rich learning process.
+- `prompts/iteration-008.md`: build the mission-based Geometry Arena introduction course.

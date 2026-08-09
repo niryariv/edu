@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="קורס מבוא אינטראקטיבי לגיאומטריה דרך בניית זירת משחק"
+    />
+    <title>זירת הגיאומטריה | מבוא אינטראקטיבי</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../">edu / זירת הגיאומטריה</a>
+      <nav aria-label="קישורי הקורס">
+        <a href="../">כל הקורסים</a>
+        <a href="https://github.com/niryariv/edu/tree/main/geometry-arena">קוד המקור</a>
+        <a href="https://github.com/niryariv/edu/blob/main/prompts/lesson-builder.md">הפרומפט</a>
+        <a href="https://github.com/niryariv/edu/blob/main/skills/lesson-builder/SKILL.md">הסקיל</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="course-title">
+        <div class="hero__copy">
+          <p class="eyebrow">משימת פתיחה · מבוא לגיאומטריה</p>
+          <h1 id="course-title">בונים זירת משחק שאפשר לתאר במדויק</h1>
+          <p class="hero__lead">
+            דמות, קיר, דרך ולייזר נראים שונים — אבל כולם בנויים מארבע אבני יסוד
+            גיאומטריות. גלו אותן תוך כדי בניית הזירה.
+          </p>
+          <div class="hero__actions">
+            <button class="button button--primary" id="startCourse" type="button">
+              מתחילים במשימה
+            </button>
+            <button class="button button--quiet" id="resetCourse" type="button">
+              התחלה מחדש
+            </button>
+          </div>
+          <p class="safety-note">🟢 כל הפעולות בקורס הן סימולציה בטוחה והפיכה.</p>
+        </div>
+
+        <div class="hero__arena" aria-label="תצוגה מקדימה של זירת משחק גיאומטרית">
+          <span class="preview-point" aria-hidden="true"></span>
+          <span class="preview-wall" aria-hidden="true"></span>
+          <span class="preview-road" aria-hidden="true"></span>
+          <span class="preview-ray" aria-hidden="true"></span>
+          <span class="preview-label label-a">A</span>
+          <span class="preview-label label-b">B</span>
+          <span class="preview-label label-c">C</span>
+        </div>
+      </section>
+
+      <section class="course-shell" aria-label="מסלול הקורס">
+        <aside class="status-board" aria-labelledby="status-title">
+          <p class="eyebrow">לוח החקירה</p>
+          <h2 id="status-title">איפה אנחנו?</h2>
+          <div class="progress" aria-label="התקדמות בקורס">
+            <span id="progressFill"></span>
+          </div>
+          <p class="progress-text"><strong id="progressCount">0</strong> מתוך 6 משימות</p>
+
+          <dl class="evidence-board" aria-live="polite">
+            <div>
+              <dt>מה אנחנו יודעים?</dt>
+              <dd id="knownState">הזירה עדיין ריקה.</dd>
+            </div>
+            <div>
+              <dt>מה בודקים עכשיו?</dt>
+              <dd id="nextState">איך מסמנים מקום מדויק?</dd>
+            </div>
+            <div>
+              <dt>מה גילינו?</dt>
+              <dd id="resultState">עוד לא אספנו ראיה.</dd>
+            </div>
+          </dl>
+
+          <div class="concept-key" aria-label="מפתח מושגים">
+            <h3>המפתח שלנו</h3>
+            <ul id="conceptList">
+              <li class="is-empty">המושגים יופיעו אחרי שנגלה אותם.</li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="missions">
+          <section class="mission-card" id="mission-1" data-stage="1" aria-labelledby="mission-1-title">
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 1 · התנסות</p>
+              <span class="stage-badge">צעד מודרך</span>
+            </div>
+            <h2 id="mission-1-title">היכן השחקן מתחיל?</h2>
+            <p class="instruction">לחצו פעם אחת על המקום המדויק שבו תרצו להציב את השחקן.</p>
+
+            <div class="click-arena" id="spawnArena" role="button" tabindex="0" aria-label="זירה ריקה. לחצו כדי לבחור נקודת התחלה">
+              <span class="grid-label">זירה 01</span>
+              <span class="spawn-marker" id="spawnMarker" hidden>A</span>
+            </div>
+            <p class="feedback" id="spawnFeedback" aria-live="polite"></p>
+
+            <div class="follow-up" id="pointReflection" hidden>
+              <p class="question">מה היה חשוב בפעולה הזאת?</p>
+              <div class="choice-row" data-group="point-reflection">
+                <button type="button" data-value="location">המקום המדויק</button>
+                <button type="button" data-value="length">האורך של הסימון</button>
+              </div>
+              <p class="feedback" id="pointReflectionFeedback" aria-live="polite"></p>
+            </div>
+
+            <button class="hint-button" type="button" data-hint="1">רמז קטן</button>
+            <p class="hint" id="hint-1" aria-live="polite"></p>
+            <button class="next-button" type="button" data-next="2" hidden>למשימת הקיר</button>
+          </section>
+
+          <section class="mission-card" id="mission-2" data-stage="2" aria-labelledby="mission-2-title" hidden>
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 2 · ניבוי ופעולה</p>
+              <span class="stage-badge">בוחרים בין אפשרויות</span>
+            </div>
+            <h2 id="mission-2-title">בנו קיר בין A ל־B</h2>
+            <p class="question">לפני שבונים: כמה נקודות קצה יש לקיר שמתחיל ב־A ומסתיים ב־B?</p>
+            <div class="choice-row" data-group="segment-prediction">
+              <button type="button" data-value="0">אפס</button>
+              <button type="button" data-value="1">אחת</button>
+              <button type="button" data-value="2">שתיים</button>
+            </div>
+            <p class="feedback" id="segmentPredictionFeedback" aria-live="polite"></p>
+
+            <div class="follow-up" id="wallAction" hidden>
+              <div class="wall-board" id="wallBoard" aria-label="נקודות A ו-B">
+                <span class="endpoint endpoint-a">A</span>
+                <span class="wall-line" aria-hidden="true"></span>
+                <span class="endpoint endpoint-b">B</span>
+              </div>
+              <button class="button button--primary" id="buildWall" type="button">חברו את A ל־B</button>
+              <p class="feedback" id="wallFeedback" aria-live="polite"></p>
+            </div>
+
+            <div class="follow-up" id="segmentExplanation" hidden>
+              <p class="question">למה הקיר הוא קטע ולא ישר?</p>
+              <div class="choice-stack" data-group="segment-explanation">
+                <button type="button" data-value="bounded">כי יש לו שתי נקודות קצה</button>
+                <button type="button" data-value="blue">כי הוא מצויר בצבע כחול</button>
+              </div>
+              <p class="feedback" id="segmentExplanationFeedback" aria-live="polite"></p>
+            </div>
+
+            <button class="hint-button" type="button" data-hint="2">רמז קטן</button>
+            <p class="hint" id="hint-2" aria-live="polite"></p>
+            <button class="next-button" type="button" data-next="3" hidden>למשימת הדרך</button>
+          </section>
+
+          <section class="mission-card" id="mission-3" data-stage="3" aria-labelledby="mission-3-title" hidden>
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 3 · השוואה</p>
+              <span class="stage-badge">מזהים לפי ראיות</span>
+            </div>
+            <h2 id="mission-3-title">בחרו דרך שממשיכה בשני הכיוונים</h2>
+            <p class="instruction">החצים אומרים שהמסלול ממשיך מעבר למה שרואים על המסך.</p>
+
+            <div class="visual-choices" data-group="line-choice">
+              <button type="button" data-value="segment" aria-label="מסלול עם שתי נקודות קצה">
+                <span class="geometry-icon segment-icon" aria-hidden="true"></span>
+                <span>שני קצוות</span>
+              </button>
+              <button type="button" data-value="ray" aria-label="מסלול עם נקודת התחלה וחץ בכיוון אחד">
+                <span class="geometry-icon ray-icon" aria-hidden="true"></span>
+                <span>קצה וחץ</span>
+              </button>
+              <button type="button" data-value="line" aria-label="מסלול עם חצים בשני הכיוונים">
+                <span class="geometry-icon line-icon" aria-hidden="true"></span>
+                <span>שני חצים</span>
+              </button>
+            </div>
+            <p class="feedback" id="lineFeedback" aria-live="polite"></p>
+
+            <button class="hint-button" type="button" data-hint="3">רמז קטן</button>
+            <p class="hint" id="hint-3" aria-live="polite"></p>
+            <button class="next-button" type="button" data-next="4" hidden>למשימת הלייזר</button>
+          </section>
+
+          <section class="mission-card" id="mission-4" data-stage="4" aria-labelledby="mission-4-title" hidden>
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 4 · בחירה מנומקת</p>
+              <span class="stage-badge">פחות תמיכה</span>
+            </div>
+            <h2 id="mission-4-title">התקינו לייזר בנקודה C</h2>
+            <p class="question">הלייזר מתחיל במשגר וממשיך רק קדימה. איזה סימון מתאים?</p>
+
+            <div class="laser-scene" aria-label="משגר לייזר בנקודה C">
+              <span class="laser-source">C</span>
+              <span class="laser-preview" aria-hidden="true"></span>
+              <span class="target">מטרה</span>
+            </div>
+            <div class="choice-row" data-group="ray-choice">
+              <button type="button" data-value="point">נקודה</button>
+              <button type="button" data-value="segment">קטע</button>
+              <button type="button" data-value="ray">קרן</button>
+              <button type="button" data-value="line">ישר</button>
+            </div>
+            <p class="feedback" id="rayFeedback" aria-live="polite"></p>
+
+            <button class="hint-button" type="button" data-hint="4">רמז קטן</button>
+            <p class="hint" id="hint-4" aria-live="polite"></p>
+            <button class="next-button" type="button" data-next="5" hidden>לבדיקת הזירה</button>
+          </section>
+
+          <section class="mission-card" id="mission-5" data-stage="5" aria-labelledby="mission-5-title" hidden>
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 5 · תכנון עצמאי</p>
+              <span class="stage-badge">אתם מחליטים</span>
+            </div>
+            <h2 id="mission-5-title">בדיקת המהנדס של הזירה</h2>
+            <p class="instruction">התאימו לכל צורך את הכלי הגיאומטרי המתאים.</p>
+
+            <div class="matching-grid" id="arenaMatching">
+              <label>
+                <span>📍 מקום מדויק לאוצר</span>
+                <select data-answer="point">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+              <label>
+                <span>🧱 גדר בין שני עמודים</span>
+                <select data-answer="segment">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+              <label>
+                <span>🔦 אור שמתחיל בפנס וממשיך קדימה</span>
+                <select data-answer="ray">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+              <label>
+                <span>🛣️ כביש שממשיך מעבר למפה בשני הצדדים</span>
+                <select data-answer="line">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+            </div>
+            <button class="button button--primary" id="checkArena" type="button">בדקו את התכנון</button>
+            <p class="feedback" id="arenaFeedback" aria-live="polite"></p>
+
+            <button class="hint-button" type="button" data-hint="5">רמז קטן</button>
+            <p class="hint" id="hint-5" aria-live="polite"></p>
+            <button class="next-button" type="button" data-next="6" hidden>למשימת ההעברה</button>
+          </section>
+
+          <section class="mission-card transfer-card" id="mission-6" data-stage="6" aria-labelledby="mission-6-title" hidden>
+            <div class="mission-card__topline">
+              <p class="eyebrow">משימה 6 · העברה</p>
+              <span class="stage-badge">מקרה חדש</span>
+            </div>
+            <h2 id="mission-6-title">המשחק נסגר. האם הכללים עובדים בעיר?</h2>
+            <p class="instruction">עכשיו אין זירת משחק ואין דוגמאות זהות. השתמשו בכלל שגיליתם.</p>
+
+            <div class="city-map" aria-label="מפה עירונית מופשטת">
+              <span class="city-stop">תחנה</span>
+              <span class="city-bridge">גשר</span>
+              <span class="city-road">כביש</span>
+            </div>
+
+            <div class="matching-grid" id="cityMatching">
+              <label>
+                <span>תחנת אוטובוס במיקום מדויק</span>
+                <select data-answer="point">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+              <label>
+                <span>גשר שמחבר שתי גדות</span>
+                <select data-answer="segment">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+              <label>
+                <span>כביש שממשיך מעבר למפה בשני הכיוונים</span>
+                <select data-answer="line">
+                  <option value="">בחרו…</option>
+                  <option value="point">נקודה</option>
+                  <option value="segment">קטע</option>
+                  <option value="ray">קרן</option>
+                  <option value="line">ישר</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset class="reason-fieldset">
+              <legend>איזו ראיה עוזרת להבדיל בין קטע, קרן וישר?</legend>
+              <label><input type="radio" name="transfer-reason" value="color" /> הצבע שלהם</label>
+              <label><input type="radio" name="transfer-reason" value="endpoints" /> מספר נקודות הקצה והחצים</label>
+              <label><input type="radio" name="transfer-reason" value="name" /> השם של המקום</label>
+            </fieldset>
+
+            <button class="button button--primary" id="checkTransfer" type="button">בדקו אם הכלל עבר לעיר</button>
+            <p class="feedback" id="transferFeedback" aria-live="polite"></p>
+
+            <button class="hint-button" type="button" data-hint="6">רמז קטן</button>
+            <p class="hint" id="hint-6" aria-live="polite"></p>
+
+            <div class="certificate" id="certificate" hidden>
+              <p class="eyebrow">המשימה הושלמה</p>
+              <h3>אתם מהנדסי זירה גיאומטרית!</h3>
+              <p>
+                לא רק זיהיתם ציורים: השתמשתם במספר נקודות הקצה כדי להסביר
+                ולפתור מקרה חדש.
+              </p>
+              <div class="exit-ticket">
+                <p><strong>כרטיס יציאה:</strong> השלימו בקול או על דף:</p>
+                <p>“קטע שונה מישר כי…”</p>
+                <p>“קרן שונה מקטע כי…”</p>
+              </div>
+              <a class="button button--primary" href="../">חזרה לכל הקורסים</a>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>קורס פתוח בעברית · נבנה לפי תהליך הלמידה המשימתי של edu</p>
+      <div>
+        <a href="https://github.com/niryariv/edu/tree/main/geometry-arena">קוד המקור</a>
+        <a href="https://github.com/niryariv/edu/blob/main/prompts/iteration-008.md">איך בנינו את הקורס</a>
+      </div>
+    </footer>
+  </body>
+</html>
