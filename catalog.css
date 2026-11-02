@@ -161,9 +161,9 @@ strong {
 }
 
 .course-links {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
   gap: 10px;
+  align-items: center;
   align-self: end;
 }
 
@@ -182,6 +182,32 @@ strong {
   background: var(--blue);
   border-color: var(--blue);
   color: #fff;
+}
+
+.course-links .source-link {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  margin-inline-start: auto;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.course-links .source-link:hover {
+  color: var(--blue);
+  background: var(--bg);
+}
+
+.course-links .source-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.source-link svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .open-source {
@@ -217,10 +243,6 @@ strong {
 }
 
 @media (max-width: 720px) {
-  .course-links {
-    grid-template-columns: 1fr;
-  }
-
   .course-card {
     min-height: 0;
     padding: 18px;
